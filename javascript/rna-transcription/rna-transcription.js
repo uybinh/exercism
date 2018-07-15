@@ -1,14 +1,15 @@
-function DnaTranscriber(){
-  let transcribed = {
-    "G": "C",
-    "C": "G",
-    "T": "A",
-    "A": "U"
-  }
+const TRANSCRIBED = {
+  "G": "C",
+  "C": "G",
+  "T": "A",
+  "A": "U"
+}
 
-  this.toRna = function(dnaSequence){
-    return dnaSequence.split("").map(function(dna){
-      if (transcribed[dna]) return transcribed[dna];
+function DnaTranscriber(){
+
+  this.toRna = dnaSequence => {
+    return dnaSequence.split("").map( dna => {
+      if (TRANSCRIBED[dna]) return TRANSCRIBED[dna];
       throw new Error('Invalid input');
     }).join("");
   }
