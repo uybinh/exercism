@@ -1,14 +1,14 @@
 class Sieve
   def initialize number
-    @number = number
+    @n = number
   end
 
   def primes
-    sieves = Hash[(2..@number).map {|x| [x, true]}]
+    sieves = Hash[(2..@n).map {|x| [x, true]}]
     sieves.each do |number, prime|
-      break if number**2 > @number
+      break if number**2 > @n
       multiplier = 2
-      until number*multiplier > @number do
+      until number*multiplier > @n do
         sieves[number*multiplier] = false
         multiplier += 1
       end
