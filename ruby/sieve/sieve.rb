@@ -1,19 +1,19 @@
 class Sieve
-  def initialize number
-    @n = number
+  def initialize limit
+    @limit = limit
   end
 
   def primes
-    sieves = Hash[(2..@n).map {|x| [x, true]}]
-    sieves.each do |number, prime|
-      break if number**2 > @n
+    sieves = Array(2..@limit)
+    sieves.each do |number|
+      break if number**2 > @limit
       multiplier = 2
-      until number*multiplier > @n do
-        sieves[number*multiplier] = false
+      until number*multiplier > @limit do
+        sieves.delete(number*multiplier)
         multiplier += 1
       end
     end
-    sieves.select {|key, value| key if value}.keys
+    sieves
   end
 end
 
