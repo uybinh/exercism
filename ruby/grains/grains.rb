@@ -5,7 +5,7 @@ class Grains
   end
 
   def self.total
-    (1..64).each.map{ |x| Grains.square(x) }.reduce(&:+)
+    2**64 - 1
   end
 end
 
