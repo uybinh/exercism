@@ -1,7 +1,7 @@
 class Grains
-  def self.square(number)
-    raise ArgumentError, "Number out of range" unless (1..64).include? number
-    2**(number-1)
+  def self.square(board_location)
+    raise ArgumentError, "Number out of range" unless (1..64).include? board_location
+    2**(board_location-1)
   end
 
   def self.total
