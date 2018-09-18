@@ -1,11 +1,10 @@
 class Isogram
   class << self
     def isogram? words
-      return true if words == ''
       mapping = chars_mapping(clean_words(words))
-      mapping.all? do |char, count|
-        count == 1
-      end
+      mapping.count do |char, frequency|
+        frequency > 1
+      end == 0
     end
 
     def clean_words words
@@ -13,9 +12,8 @@ class Isogram
     end
 
     def chars_mapping words
-      words.split('').reduce({}) do |mapping, char|
+      words.chars.each_with_object({}) do |char, mapping|
         mapping[char] = mapping.fetch(char, 0) + 1
-        mapping
       end
     end
 
